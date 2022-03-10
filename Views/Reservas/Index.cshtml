@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Sprint4.Reserva>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_De)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_Hasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recepcionista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_De)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Hasta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recepcionista)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitacion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Reserva }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Reserva }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Reserva })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoISOHotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="ID_Evento" />
+          </Key>
+          <Property Name="ID_Evento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Capacidad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="Huesped">
+          <Key>
+            <PropertyRef Name="ID_Huesped" />
+          </Key>
+          <Property Name="ID_Huesped" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Habitacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Edificio" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="ID_Reserva" />
+          </Key>
+          <Property Name="ID_Reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha_De" Type="date" />
+          <Property Name="Fecha_Hasta" Type="date" />
+          <Property Name="Cliente" Type="nvarchar" MaxLength="50" />
+          <Property Name="Recepcionista" Type="nvarchar" MaxLength="50" />
+          <Property Name="Habitacion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ProyectoISOHotelModelStoreContainer">
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Huesped" EntityType="Self.Huesped" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoISOHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="ID_Evento" />
+          </Key>
+          <Property Name="ID_Evento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Huesped">
+          <Key>
+            <PropertyRef Name="ID_Huesped" />
+          </Key>
+          <Property Name="ID_Huesped" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Habitacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Edificio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="ID_Reserva" />
+          </Key>
+          <Property Name="ID_Reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha_De" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_Hasta" Type="DateTime" Precision="0" />
+          <Property Name="Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Recepcionista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Habitacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ProyectoISOHotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Eventos" EntityType="Self.Evento" />
+          <EntitySet Name="Huespeds" EntityType="Self.Huesped" />
+          <EntitySet Name="Reservas" EntityType="Self.Reserva" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoISOHotelModelStoreContainer" CdmEntityContainer="ProyectoISOHotelEntities">
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="ProyectoISOHotelModel.Evento">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="ID_Evento" ColumnName="ID_Evento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Salon" ColumnName="Salon" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Huespeds">
+            <EntityTypeMapping TypeName="ProyectoISOHotelModel.Huesped">
+              <MappingFragment StoreEntitySet="Huesped">
+                <ScalarProperty Name="ID_Huesped" ColumnName="ID_Huesped" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Habitacion" ColumnName="Habitacion" />
+                <ScalarProperty Name="Edificio" ColumnName="Edificio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="ProyectoISOHotelModel.Reserva">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="ID_Reserva" ColumnName="ID_Reserva" />
+                <ScalarProperty Name="Fecha_De" ColumnName="Fecha_De" />
+                <ScalarProperty Name="Fecha_Hasta" ColumnName="Fecha_Hasta" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Recepcionista" ColumnName="Recepcionista" />
+                <ScalarProperty Name="Habitacion" ColumnName="Habitacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
